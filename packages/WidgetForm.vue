@@ -1,4 +1,5 @@
 <template>
+<!-- 中间表单渲染 -->
   <div class="widget-form-container">
     <el-form :label-position="data.labelPosition || 'left'"
              :label-width="data.labelWidth ? `${data.labelWidth}px` : '100px' "
@@ -47,7 +48,7 @@
                             :label="column.title"
                             :labelWidth="column.labelWidth"
                             :prop="column.prop"
-                            :class="{ active: selectWidget.prop == column.prop, 'required': column.required }"
+                            :class="{ active: selectWidget.prop == column.prop, 'required': column.require }"
                             @click.native="handleSelectWidget(index)">
                 <widget-form-item :item="column"
                                   :params="column.params"></widget-form-item>

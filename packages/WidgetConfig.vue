@@ -6,7 +6,7 @@
       <el-collapse v-model="collapse">
         <el-collapse-item name="1"
                           title="基本属性">
-          <el-form-item label="类型"
+          <!-- <el-form-item label="类型"
                         v-if="data.type && !data.component">
             <el-select v-model="data.type"
                        placeholder="请选择类型"
@@ -21,7 +21,7 @@
                 </el-option>
               </el-option-group>
             </el-select>
-          </el-form-item>
+          </el-form-item> -->
           <!-- <el-form-item label="属性值">
             <el-input v-model="data.prop"
                       clearable
@@ -59,9 +59,10 @@
             </el-select>
  
           </el-form-item>
+          <!-- 判断进入对应组件 -->
           <component :is="getComponent"
-                     :data="data"></component>
-        </el-collapse-item>
+                     :data="data"></component> 
+        </el-collapse-item> 
         <!-- <el-collapse-item name="2"
                           title="事件属性"
                           v-if="!['group', 'dynamic'].includes(data.type)">
@@ -115,12 +116,10 @@ export default {
       const { type, component } = this.data
       if (!type || component) return prefix + 'custom'
       let result = 'input'
-
-      if ([undefined, 'input', 'password', 'url'].includes(type)) result = 'input'
+      if ([undefined, 'input', 'password', 'url','1'].includes(type)) result = 'input' //显示基本属性
       else if (dateArr.includes(type)) result = 'date'
       else if (['array', 'img'].includes(type)) result = 'array'
       else result = type
-
       return prefix + result
     }
   },
@@ -131,18 +130,18 @@ export default {
     }
   },
   methods: {
-    async handleChangeType(type) {
-      if (type) {
-        const config = await this.getConfigByType(type);
-        config.prop = this.data.prop;
-        for (let key in config) {
-          if (config && Object.prototype.hasOwnProperty.call(config, key) && !['icon', 'label', 'span'].includes(key)) {
-            const val = config[key]
-            this.$set(this.data, key, val);
-          }
-        }
-      }
-    },
+    // async handleChangeType(type) {
+    //   if (type) {
+    //     const config = await this.getConfigByType(type);
+    //     config.prop = this.data.prop;
+    //     for (let key in config) {
+    //       if (config && Object.prototype.hasOwnProperty.call(config, key) && !['icon', 'label', 'span'].includes(key)) {
+    //         const val = config[key]
+    //         this.$set(this.data, key, val);
+    //       }
+    //     }
+    //   }
+    // },
     getConfigByType(type) {
       return new Promise((resolve, reject) => {
         fields.forEach(field => {
@@ -152,7 +151,8 @@ export default {
         })
         reject()
       })
-    }
+    },
+
   }
 }
 </script>

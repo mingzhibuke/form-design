@@ -42,11 +42,11 @@ export default [
   {
     title: '输入字段',
     list: [{
-      type: 'input',
+      type: '1',
       title: '单行文本',
       icon: 'icon-input',
       span: 24,
-      display: true
+      // display: true
      }], 
      //{
     //   type: 'password',

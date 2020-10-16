@@ -4,10 +4,10 @@
       <el-input v-model="data.notice"
                 placeholder="表单项提示内容"></el-input>
     </el-form-item>
-    <el-form-item label="默认值">
+    <!-- <el-form-item label="默认值">
       <el-input v-model="data.value"
                 placeholder="默认值"></el-input>
-    </el-form-item>
+    </el-form-item> -->
     <!-- <el-form-item label="前缀">
       <el-input v-model="data.prepend"
                 placeholder="前缀"></el-input>
@@ -32,15 +32,15 @@
                   v-if="data.type != 'password'">
       <el-switch v-model="data.showWordLimit"></el-switch>
     </el-form-item> -->
-    <el-form-item label="是否只读">
-      <el-switch v-model="data.readonly"></el-switch>
+    <el-form-item label="是否可编辑">
+      <el-switch v-model="data.editable"></el-switch>
     </el-form-item>
-    <el-form-item label="是否可见">
-      <el-switch v-model="data.display"></el-switch>
+    <el-form-item label="是否显示">
+      <el-switch v-model="data.visible"></el-switch>
     </el-form-item>
     <el-form-item label="校验"><br>
       是否必填：
-      <el-switch v-model="data.required"></el-switch>
+      <el-switch v-model="data.require"></el-switch>
       <!-- <el-input v-model.lazy="data.pattern"
                 placeholder="正则表达式"></el-input> -->
     </el-form-item>
@@ -53,9 +53,10 @@ export default {
   props: ['data'],
   data () {
     return {
-      validator: {
+        datas:{},
+        validator: {
         type: null,
-        required: null,
+        require: null,
         pattern: null,
         length: null
       }
@@ -71,23 +72,22 @@ export default {
     },
   },
   watch: {
-    'data.required': function (val) {
-      if (val) this.validator.required = { required: true, message: `${this.data.label}必须填写` }
-      else this.validator.required = null
-
+    'data.require': function (val) {
+      if (val) this.validator.require = { required: true, message: `${this.data.title}必须填写` }
+      else this.validator.require = null
       this.generateRule()
     },
     'data.pattern': function (val) {
       if (val) this.validator.pattern = { pattern: new RegExp(val), message: `${this.data.label}格式不匹配` }
       else this.validator.pattern = null
-
       // delete this.data.pattern
       this.generateRule()
     },
     'data.limitMin':function(val){
-      console.log(val,data.limiMax)
+      if(this.data.limitMax&&this.data.limitMin>this.data.limitMax){
+        this.data.limitMin=this.data.limitMax-1
+      }
     }
-
   }
 }
 </script>
