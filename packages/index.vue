@@ -5,10 +5,6 @@
       <el-aside :width="leftWidth">
         <div class="fields-list">
           <template v-if="customFields && customFields.length > 0">
-            <!-- <el-link class="field-title"
-                     :underline="false"
-                     href="https://github.com/sscfaith/avue-form-design/blob/master/CHANGELOG.md#2020-09-22"
-                     target="_blank">自定义字段 <i class="el-icon-question"></i></el-link> -->
             <draggable tag="ul"
                        :list="customFields"
                        :group="{ name: 'form', pull: 'clone', put: false }"
@@ -223,11 +219,11 @@ export default {
     },
     asideLeftWidth: {
       type: [String, Number],
-      default: '270px'
+      default: '500px'
     },
     asideRightWidth: {
       type: [String, Number],
-      default: '380px'
+      default: '500px'
     },
     showAvueDoc: {
       type: Boolean,
@@ -380,6 +376,9 @@ export default {
       if (!this.widgetForm.column || this.widgetForm.column.length == 0) this.$message.error("没有需要展示的内容")
       else {
         this.transformToAvueOptions(this.widgetForm).then(data => {
+          data.column.forEach(item=>{
+            item.label=item.title
+          })
           this.widgetFormPreview = data
           this.previewVisible = true
         })

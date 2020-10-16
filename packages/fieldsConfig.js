@@ -1,4 +1,16 @@
 export default [
+/* 
+@param titLe表单项名称
+@param notice表单项提示内容
+@param valueType 表单项值类型,如:e:文本展示;1:输入;2:进项;3:时间;4:人员;5:文件;6:位置
+@param editable表单项是否可编辑@param position表单项顺序
+@param visible表单项是否显示
+@param require表单项是否必填@param LimitMin值的最小数量
+@param LimitMax值的最大数量
+@param LimitFormat 值格式限制。如:递用户的时候,可为角色字段;送时间的时候,可为时间格式;多个条件可用";"分割,不传不限制 */
+   
+  
+ 
   // {
   //   title: '布局字段',
   //   list: [{
@@ -46,6 +58,13 @@ export default [
       title: '单行文本',
       icon: 'icon-input',
       span: 24,
+      valueType:'1',
+      limitMax: 0,
+      limitMin: 0,
+      notice: '单行文本',
+      editable: true,
+      visible: true,
+      require: false,
       // display: true
      }], 
      //{
