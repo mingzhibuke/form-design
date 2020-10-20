@@ -112,12 +112,11 @@ export default {
   props: ['data'],
   computed: {
     getComponent() {
-      debugger
       const prefix = 'config-'
       const { type, component } = this.data
       if (!type || component) return prefix + 'custom'
       let result = 'input'
-      if ([undefined, 'input', 'password', 'url','1'].includes(type)) result = 'input' //显示基本属性
+      if ([undefined, 'input', 'password', 'url','1','0'].includes(type)) result = 'input' //显示基本属性
       else if (dateArr.includes(type)) result = 'date'
       else if (['array', 'img'].includes(type)) result = 'array'
       else result = type

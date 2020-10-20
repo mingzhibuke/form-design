@@ -9,15 +9,12 @@
                 placeholder="距左边边距"></el-input>
     </el-form-item>
     <el-form-item label="颜色">
-      <el-color-picker v-model="data.styles.color"
+      <el-color-picker v-model="data.color"
                        size="mini"></el-color-picker>
     </el-form-item>
-    <el-form-item label="字体大小">
-      <el-input v-model="data.styles.fontSize"
-                placeholder="字体大小"></el-input>
-    </el-form-item>
+
     <el-form-item label="粗体">
-      <el-select v-model="data.styles.fontWeight"
+      <el-select v-model="data.fontWeight"
                  placeholder="粗体">
         <el-option v-for="item in options"
                    :key="item"

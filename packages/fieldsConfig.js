@@ -90,6 +90,7 @@ export default [
         limitMin: 0,
         limitMax: 0,
         limitFormat: null,
+        color: '#000',
         formValues: [
           {
             id: -1,
