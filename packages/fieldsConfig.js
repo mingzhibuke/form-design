@@ -2,7 +2,7 @@ export default [
 /* 
 @param titLe表单项名称
 @param notice表单项提示内容
-@param valueType 表单项值类型,如:e:文本展示;1:输入;2:进项;3:时间;4:人员;5:文件;6:位置
+@param valueType 表单项值类型,如:0:文本展示;1:输入;2:进项;3:时间;4:人员;5:文件;6:位置
 @param editable表单项是否可编辑@param position表单项顺序
 @param visible表单项是否显示
 @param require表单项是否必填@param LimitMin值的最小数量
@@ -57,16 +57,51 @@ export default [
       type: '1',
       title: '单行文本',
       icon: 'icon-input',
-      span: 24,
       valueType:'1',
       limitMax: 0,
       limitMin: 0,
+      position: 0,
       notice: '单行文本',
       editable: true,
       visible: true,
       require: false,
-      // display: true
-     }], 
+      limitFormat: null,
+      formValues:[
+        {
+          id: -1,
+          limitFormat: null,
+          editable: false,
+          position: 1,
+          valueType: 0,
+          formValue: "{\"valueType\":0,\"content\":\"填写表单!\"}"
+        }
+      ]
+     },
+     {
+        type: 'title',
+        title: '文本展示',
+        icon: 'icon-textarea',
+        notice: "文本举例1",
+        valueType: 0,
+        position: 0,
+        editable: false,
+        visible: true,
+        require: false,
+        limitMin: 0,
+        limitMax: 0,
+        limitFormat: null,
+        formValues: [
+          {
+            id: -1,
+            limitFormat: null,
+            editable: false,
+            position: 1,
+            valueType: 0,
+            formValue: "{\"valueType\":0,\"content\":\"填写表单,帮助我们解决问题,\"}"
+          }
+        ]
+      },
+    ], 
      //{
     //   type: 'password',
     //   label: '密码',

@@ -39,14 +39,14 @@
                              placeholder="宽度"
                              :min="100"></el-input-number>
           </el-form-item>
-          <el-form-item label="表单栅格"
+          <!-- <el-form-item label="表单栅格"
                         v-if="!data.subfield && !['group'].includes(data.type)">
             <el-input-number v-model="data.span"
                              controls-position="right"
                              placeholder="表单栅格"
                              :min="8"
                              :max="24"></el-input-number>
-          </el-form-item>
+          </el-form-item> -->
           <el-form-item label="数据类型"
                         v-if="['cascader','checkbox','upload','img','array'].includes(data.type)">
             <el-select v-model="data.dataType"
@@ -112,6 +112,7 @@ export default {
   props: ['data'],
   computed: {
     getComponent() {
+      debugger
       const prefix = 'config-'
       const { type, component } = this.data
       if (!type || component) return prefix + 'custom'

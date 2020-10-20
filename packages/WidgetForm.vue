@@ -41,7 +41,7 @@
             </div>
             <el-col v-else
                     :key="index"
-                    :md="column.span || 12"
+                    :md="column.span || 24"
                     :xs="24"
                     :offset="column.offset || 0">
               <el-form-item class="widget-form-item"
