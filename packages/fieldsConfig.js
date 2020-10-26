@@ -1,16 +1,16 @@
 export default [
-/* 
-@param titLe表单项名称
-@param notice表单项提示内容
-@param valueType 表单项值类型,如:0:文本展示;1:输入;2:进项;3:时间;4:人员;5:文件;6:位置
-@param editable表单项是否可编辑@param position表单项顺序
-@param visible表单项是否显示
-@param require表单项是否必填@param LimitMin值的最小数量
-@param LimitMax值的最大数量
-@param LimitFormat 值格式限制。如:递用户的时候,可为角色字段;送时间的时候,可为时间格式;多个条件可用";"分割,不传不限制 */
-   
-  
- 
+  /* 
+  @param titLe表单项名称
+  @param notice表单项提示内容
+  @param valueType 表单项值类型,如:0:文本展示;1:输入;2:选项;3:时间;4:人员;5:文件;6:位置
+  @param editable表单项是否可编辑@param position表单项顺序
+  @param visible表单项是否显示
+  @param require表单项是否必填@param LimitMin值的最小数量
+  @param LimitMax值的最大数量
+  @param LimitFormat 值格式限制。如:递用户的时候,可为角色字段;送时间的时候,可为时间格式;多个条件可用";"分割,不传不限制 */
+
+
+
   // {
   //   title: '布局字段',
   //   list: [{
@@ -53,35 +53,37 @@ export default [
   // },
   {
     title: '输入字段',
-    list: [{
-      type: '1',
-      title: '单行文本',
-      icon: 'icon-input',
-      valueType:'1',
-      limitMax: 0,
-      limitMin: 0,
-      position: 0,
-      notice: '单行文本',
-      editable: true,
-      visible: true,
-      require: false,
-      limitFormat: null,
-      formValues:[
-        {
-          id: -1,
-          limitFormat: null,
-          editable: false,
-          position: 1,
-          valueType: 0,
-          formValue: "{\"valueType\":0,\"content\":\"填写表单!\"}"
-        }
-      ]
-     },
-     {
+    list: [
+      {
+        type: 'input',
+        title: '单行文本',
+        icon: 'icon-input',
+        valueType: '1',
+        limitMax: 0,
+        limitMin: 0,
+        position: 0,
+        notice: '单行文本',
+        editable: true,
+        visible: true,
+        require: false,
+        limitFormat: null,
+        formValues: [
+          {
+            id: -1,
+            limitFormat: null,
+            editable: false,
+            position: 1,
+            valueType: 0,
+            formValue: { valueType: 1, content: '填写表单!' }
+          }
+        ]
+      },
+      {
         type: 'title',
         title: '文本展示',
         icon: 'icon-textarea',
         notice: "文本举例1",
+        value: "文本举例1",
         valueType: 0,
         position: 0,
         editable: false,
@@ -90,7 +92,6 @@ export default [
         limitMin: 0,
         limitMax: 0,
         limitFormat: null,
-        color: '#000',
         formValues: [
           {
             id: -1,
@@ -98,12 +99,122 @@ export default [
             editable: false,
             position: 1,
             valueType: 0,
-            formValue: "{\"valueType\":0,\"content\":\"填写表单,帮助我们解决问题,\"}"
+            formValue: { valueType: 0, content: "填写表单,帮助我们解决问题" }
           }
         ]
       },
-    ], 
-     //{
+      // {
+      //   type: 'radio',
+      //   title: '单选框组',
+      //   icon: 'icon-radio',
+      //   notice: "单选举例,必选",
+      //   valueType: 2,
+      //   position: 0,
+      //   editable: true,
+      //   disabled: false,
+      //   visible: true,
+      //   require: true,
+      //   limitMin: 1,
+      //   limitMax: 1,
+      //   limitFormat: null,
+      //   dicData: [
+      //     { label: '选项1', value: '0' },
+      //     { label: '选项2', value: '1' },
+      //   ],
+      //   formValues: [
+      //     {
+      //       id: -1,
+      //       limitFormat: null,
+      //       editable: true,
+      //       position: 1,
+      //       valueType: 2,
+      //       formValue: {valueType:2,ckId:1,ckName:"选项1",ckValue:1,ckChecked:false}
+      //     },
+      //     {
+      //       id: -1,
+      //       limitFormat: null,
+      //       editable: true,
+      //       position: 2,
+      //       valueType: 2,
+      //       formValue: {valueType:2,ckId:2,ckName:"选项2",ckValue:2,ckChecked:false}
+      //     }
+      //   ]
+      // }, 
+      // {
+      //   type: 'checkbox',
+      //   title: '多选框组',
+      //   notice: '多选举例,必选',
+      //   icon: 'icon-checkbox',
+      //   id: -1,
+      //   valueType: 2,
+      //   position: 0,
+      //   editable: true,
+      //   visible: true,
+      //   require: true,
+      //   limitMin: 1,
+      //   limitMax: 3,
+      //   limitFormat: null,
+      //   dicData: [
+      //     { label: '选项1', value: '0' },
+      //     { label: '选项2', value: '1' },
+      //     { label: '选项3', value: '2' },
+      //     { label: '选项4', value: '3' },
+      //   ],
+      //   formValues: [
+      //     {
+      //       id: -1,
+      //       limitFormat: null,
+      //       editable: true,
+      //       position: 1,
+      //       valueType: 2,
+      //       formValue: {valueType:2,ckId:1,ckName:'选项1',ckValue:1,ckChecked:false}
+      //     },
+      //     {
+      //       id: -1,
+      //       limitFormat: null,
+      //       editable: true,
+      //       position: 2,
+      //       valueType: 2,
+      //       formValue: {valueType:2,ckId:2,ckName:'选项2',ckValue:2,ckChecked:false}
+      //     },
+      //     {
+      //       id: -1,
+      //       limitFormat: null,
+      //       editable: true,
+      //       position: 3,
+      //       valueType: 2,
+      //       formValue: {valueType:2,ckId:3,ckName:'选项3',ckValue:3,ckChecked:false}
+      //     },
+      //     {
+      //       id: -1,
+      //       limitFormat: null,
+      //       editable: true,
+      //       position: 4,
+      //       valueType: 2,
+      //       formValue: {valueType:2,ckId:4,ckName:'选项4',ckValue:4,ckChecked:false}
+      //     }
+      //   ]
+      // },
+
+
+      {
+        id: -1,
+        type: '6',
+        icon: 'icon-map',
+        title: "位置举例",
+        notice: "位置举例,必选",
+        valueType: '6',
+        position: 0,
+        editable: true,
+        visible: true,
+        require: true,
+        limitMin: 1,
+        limitMax: 1,
+        limitFormat: null,
+        formValues: []
+      },
+    ],
+    //{
     //   type: 'password',
     //   label: '密码',
     //   icon: 'icon-password',
@@ -147,6 +258,121 @@ export default [
     //   span: 24,
     //   display: true
     // }]
+  },
+  {
+    title: '选择字段',
+    list: [
+      {
+        type: 'select',
+        title: '单选下拉',
+        notice: "单选举例,非必选",
+        icon: 'icon-select',
+        id: -1,
+        valueType: 2,
+        position: 0,
+        editable: true,
+        visible: true,
+        require: false,
+        limitMin: 1,
+        limitMax: 1,
+        limitFormat: null,
+        dicData: [
+          { label: '选项1', value: '0' },
+          { label: '选项2', value: '1' },
+          { label: '选项3', value: '2' },
+          { label: '选项4', value: '3' },
+        ],
+        formValues: [
+          {
+            id: -1,
+            limitFormat: null,
+            editable: true,
+            position: 1,
+            valueType: 2,
+            formValue: { valueType: 2, ckId: 1, ckName: '选项1', ckValue: 1, ckChecked: false }
+          },
+          {
+            id: -1,
+            limitFormat: null,
+            editable: true,
+            position: 2,
+            valueType: 2,
+            formValue: { valueType: 2, ckId: 2, ckName: '选项2', ckValue: 2, ckChecked: false }
+          },
+          {
+            id: -1,
+            limitFormat: null,
+            editable: true,
+            position: 3,
+            valueType: 2,
+            formValue: { valueType: 2, ckId: 3, ckName: '选项3', ckValue: 3, ckChecked: false }
+          },
+          {
+            id: -1,
+            limitFormat: null,
+            editable: true,
+            position: 4,
+            valueType: 2,
+            formValue: { valueType: 2, ckId: 4, ckName: '选项4', ckValue: 4, ckChecked: false }
+          }
+        ]
+      },
+      {
+        type: 'select',
+        title: '多选下拉',
+        notice: "多选举例,必选",
+        icon: 'icon-select',
+        id: -1,
+        valueType: 2,
+        position: 0,
+        editable: true,
+        visible: true,
+        require: true,
+        limitMin: 1,
+        limitMax: 3,
+        limitFormat: null,
+        dicData: [
+          { label: '选项1', value: '0' },
+          { label: '选项2', value: '1' },
+          { label: '选项3', value: '2' },
+          { label: '选项4', value: '3' },
+        ],
+        formValues: [
+          {
+            id: -1,
+            limitFormat: null,
+            editable: true,
+            position: 1,
+            valueType: 2,
+            formValue: { valueType: 2, ckId: 1, ckName: '选项1', ckValue: 1, ckChecked: false }
+          },
+          {
+            id: -1,
+            limitFormat: null,
+            editable: true,
+            position: 2,
+            valueType: 2,
+            formValue: { valueType: 2, ckId: 2, ckName: '选项2', ckValue: 2, ckChecked: false }
+          },
+          {
+            id: -1,
+            limitFormat: null,
+            editable: true,
+            position: 3,
+            valueType: 2,
+            formValue: { valueType: 2, ckId: 3, ckName: '选项3', ckValue: 3, ckChecked: false }
+          },
+          {
+            id: -1,
+            limitFormat: null,
+            editable: true,
+            position: 4,
+            valueType: 2,
+            formValue: { valueType: 2, ckId: 4, ckName: '选项4', ckValue: 4, ckChecked: false }
+          }
+        ]
+      }
+    ]
   },
   // {
   //   title: '选择字段',
@@ -258,99 +484,270 @@ export default [
   //     }
   //   }]
   // },
-  // {
-  //   title: '上传字段',
-  //   list: [{
-  //     type: 'upload',
-  //     label: '上传',
-  //     icon: 'icon-upload',
-  //     span: 24,
-  //     display: true,
-  //     showFileList: true,
-  //     multiple: true,
-  //     limit: 10,
-  //     // props: {},
-  //     propsHttp: {},
-  //     canvasOption: {},
-  //     headersConfig: [],
-  //     dataConfig: []
-  //   }],
-  // },
-  // {
-  //   title: '日期时间字段',
-  //   list: [{
-  //     type: 'year',
-  //     label: '年',
-  //     icon: 'icon-year',
-  //     span: 24,
-  //     display: true,
-  //     format: 'yyyy',
-  //     valueFormat: 'yyyy'
-  //   }, {
-  //     type: 'month',
-  //     label: '月',
-  //     icon: 'icon-month',
-  //     span: 24,
-  //     display: true,
-  //     format: 'MM',
-  //     valueFormat: 'MM'
-  //   }, {
-  //     type: 'week',
-  //     label: '周',
-  //     icon: 'icon-week',
-  //     span: 24,
-  //     display: true,
-  //     format: 'yyyy 第 WW 周',
-  //   }, {
-  //     type: 'date',
-  //     label: '日期',
-  //     icon: 'icon-date',
-  //     span: 24,
-  //     display: true,
-  //     format: 'yyyy-MM-dd',
-  //     valueFormat: 'yyyy-MM-dd'
-  //   }, {
-  //     type: 'time',
-  //     label: '时间',
-  //     icon: 'icon-time',
-  //     span: 24,
-  //     display: true,
-  //     format: 'HH:mm:ss',
-  //     valueFormat: 'HH:mm:ss'
-  //   }, {
-  //     type: 'datetime',
-  //     label: '日期时间',
-  //     icon: 'icon-datetime',
-  //     span: 24,
-  //     display: true,
-  //     format: 'yyyy-MM-dd HH:mm:ss',
-  //     valueFormat: 'yyyy-MM-dd HH:mm:ss'
-  //   }, {
-  //     type: 'daterange',
-  //     label: '日期范围',
-  //     icon: 'icon-date-range',
-  //     span: 24,
-  //     display: true,
-  //     format: 'yyyy-MM-dd',
-  //     valueFormat: 'yyyy-MM-dd'
-  //   }, {
-  //     type: 'timerange',
-  //     label: '时间范围',
-  //     icon: 'icon-time-range',
-  //     span: 24,
-  //     display: true,
-  //     format: 'HH:mm:ss',
-  //     valueFormat: 'HH:mm:ss'
-  //   }, {
-  //     type: 'datetimerange',
-  //     label: '日期时间范围',
-  //     icon: 'icon-datetime-range',
-  //     span: 24,
-  //     display: true,
-  //     format: 'yyyy-MM-dd HH:mm:ss',
-  //     valueFormat: 'yyyy-MM-dd HH:mm:ss'
-  //   }],
-  // },
+  {
+    title: '上传字段',
+    list: [{
+      type: 'upload',
+      title: '上传',
+      icon: 'icon-upload',
+      valueType: 5,
+      position: 0,
+      editable: true,
+      visible: true,
+      require: false,
+      limitMin: 0,
+      limitMax: 9,
+      limitFormat: "IMAGE",
+      formValues: [
+        {
+          id: -1,
+          limitFormat: null,
+          editable: true,
+          position: 1,
+          valueType: 5,
+          formValue: {valueType:5,fileName:'测试图片',fileType:'FILE',fileUrl:'http://www.qsos.vip/upload/2018/11/ic_launcher20181225044818498.png'}
+        }
+      ]
+    }],
+  },
+  {
+    title: '日期时间字段',
+    list: [
+      {
+        id: -1,
+        type: 'year',
+        title: '年',
+        notice: "请选择年",
+        icon: 'icon-year',
+        format: 'yyyy',
+        valueFormat: 'yyyy',
+        valueType: 3,
+        position: 0,
+        editable: true,
+        visible: true,
+        require: true,
+        limitMin: 0,
+        limitMax: 0,
+        limitFormat: null,
+        formValues: [
+          {
+            id: -1,
+            limitFormat: 'yyyy',
+            editable: true,
+            position: 1,
+            valueType: 3,
+            formValue: { time: '1602312367028', timeLimitMin: '1444632367028', timeLimitMax: '1759992367028', valueType: 3 }
+          }
+        ]
+      }, {
+        type: 'month',
+        title: '年月',
+        icon: 'icon-month',
+        notice:'请选择年月',
+        display: true,
+        format: 'yyyy-MM',
+        valueFormat: 'yyyy-MM',
+        valueType: 3,
+        position: 0,
+        editable: true,
+        visible: true,
+        require: true,
+        limitMin: 0,
+        limitMax: 0,
+        limitFormat: null,
+        formValues: [
+          {
+            id: -1,
+            limitFormat: 'yyyy-MM',
+            editable: true,
+            position: 1,
+            valueType: 3,
+            formValue: { time: '1602312367028', timeLimitMin: '1444632367028', timeLimitMax: '1759992367028', valueType: 3 }
+          }
+        ]
+      },
+      {
+        type: 'date',
+        title: '日期',
+        notice:'请选择日期',
+        icon: 'icon-date',
+        format: 'yyyy-MM-dd',
+        valueFormat: 'yyyy-MM-dd',
+        valueType: 3,
+        position: 0,
+        editable: true,
+        visible: true,
+        require: true,
+        limitMin: 0,
+        limitMax: 0,
+        limitFormat: null,
+        formValues: [
+          {
+            id: -1,
+            limitFormat: 'yyyy-MM-dd',
+            editable: true,
+            position: 1,
+            valueType: 3,
+            formValue: { time: '1602312367028', timeLimitMin: '1444632367028', timeLimitMax: '1759992367028', valueType: 3 }
+          }
+        ]
+       },
+       {
+        type: 'datetime',
+        title: '日期时间',
+        notice:'请选择日期时间',
+        icon: 'icon-datetime',
+        format: 'yyyy-MM-dd HH:mm:ss',
+        valueFormat: 'yyyy-MM-dd HH:mm:ss',
+        valueType: 3,
+        position: 0,
+        editable: true,
+        visible: true,
+        require: true,
+        limitMin: 0,
+        limitMax: 0,
+        limitFormat: null,
+        formValues: [
+          {
+            id: -1,
+            limitFormat: 'yyyy-MM-dd HH',
+            editable: true,
+            position: 1,
+            valueType: 3,
+            formValue: { time: '1602312367028', timeLimitMin: '1444632367028', timeLimitMax: '1759992367028', valueType: 3 }
+          }
+        ]
+      },
+      {
+        type: 'time',
+        title: '时间',
+        notice:'请选择时间',
+        icon: 'icon-time',
+        format: 'HH:mm',
+        valueFormat: 'HH:mm',
+        valueType: 3,
+        position: 0,
+        editable: true,
+        visible: true,
+        require: true,
+        limitMin: 0,
+        limitMax: 0,
+        limitFormat: null,
+        formValues: [
+          {
+            id: -1,
+            limitFormat: 'HH:mm',
+            editable: true,
+            position: 1,
+            valueType: 3,
+            formValue: { time: '1602312367028', timeLimitMin: '1444632367028', timeLimitMax: '1759992367028', valueType: 3 }
+          }
+        ]
+      },
+      {
+        type: 'daterange',
+        title: '日期范围',
+        notice:'请选择日期范围',
+        icon: 'icon-date-range',
+        format: 'yyyy-MM-dd',
+        valueFormat: 'yyyy-MM-dd',
+        valueType: 3,
+        position: 0,
+        editable: true,
+        visible: true,
+        require: true,
+        limitMin: '1444632367028',
+        limitMax: '1759992367028',
+        limitFormat: null,
+        formValues: [
+          {
+            id: -1,
+            limitFormat: 'yyyy-MM-dd',
+            editable: true,
+            position: 1,
+            valueType: 3,
+            formValue: { time: '1602312367028', timeLimitMin: '1444632367028', timeLimitMax: '1759992367028', valueType: 3 }
+          },
+          {
+            id: -1,
+            limitFormat: 'yyyy-MM-dd',
+            editable: true,
+            position: 1,
+            valueType: 3,
+            formValue: { time: '1602312367028', timeLimitMin: '1444632367028', timeLimitMax: '1759992367028', valueType: 3 }
+          }
+        ]
+      }, 
+      {
+        type: 'timerange',
+        title: '时间范围',
+        notice:'请选择时间范围',
+        icon: 'icon-time-range',
+        format: 'HH:mm:ss',
+        valueFormat: 'HH:mm:ss',
+        valueType: 3,
+        position: 0,
+        editable: true,
+        visible: true,
+        require: true,
+        limitMin: '1444632367028',
+        limitMax: '1759992367028',
+        limitFormat: null,
+        formValues: [
+          {
+            id: -1,
+            limitFormat: 'HH:mm:ss',
+            editable: true,
+            position: 1,
+            valueType: 3,
+            formValue: { time: '1602312367028', timeLimitMin: '1444632367028', timeLimitMax: '1759992367028', valueType: 3 }
+          },
+          {
+            id: -1,
+            limitFormat: 'HH:mm:ss',
+            editable: true,
+            position: 1,
+            valueType: 3,
+            formValue: { time: '1602312367028', timeLimitMin: '1444632367028', timeLimitMax: '1759992367028', valueType: 3 }
+          }
+        ]
+      }, 
+      {
+        type: 'datetimerange',
+        title: '日期时间范围',
+        notice:'请选择日期时间范围',
+        icon: 'icon-datetime-range',
+        format: 'yyyy-MM-dd HH:mm:ss',
+        valueFormat: 'yyyy-MM-dd HH:mm:ss',
+        valueType: 3,
+        position: 0,
+        editable: true,
+        visible: true,
+        require: true,
+        limitMin: '1444632367028',
+        limitMax: '1759992367028',
+        limitFormat: null,
+        formValues: [
+          {
+            id: -1,
+            limitFormat: 'yyyy-MM-dd HH:mm:ss',
+            editable: true,
+            position: 1,
+            valueType: 3,
+            formValue: { time: '1602312367028', timeLimitMin: '1444632367028', timeLimitMax: '1759992367028', valueType: 3 }
+          },
+          {
+            id: -1,
+            limitFormat: 'yyyy-MM-dd HH:mm:ss',
+            editable: true,
+            position: 1,
+            valueType: 3,
+            formValue: { time: '1602312367028', timeLimitMin: '1444632367028', timeLimitMax: '1759992367028', valueType: 3 }
+          }
+        ]
+      }
+    ],
+  },
   // {
   //   title: '插件字段（富文本需要单独引入）',
   //   list: [{

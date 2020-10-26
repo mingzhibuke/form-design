@@ -1,10 +1,10 @@
 <template>
   <div>
-    <el-form-item label="默认值">
+    <!-- <el-form-item label="默认值">
       <el-input v-model="data.value"
                 placeholder="默认值"></el-input>
-    </el-form-item>
-    <el-form-item label="字典配置"><br>
+    </el-form-item> -->
+    <!-- <el-form-item label="字典配置"><br>
       <el-tabs v-model="data.dicOption"
                stretch
                @tab-click="handleTabClick">
@@ -76,8 +76,8 @@
     </el-form-item>
     <el-form-item label="边框">
       <el-switch v-model="data.border"></el-switch>
-    </el-form-item>
-    <el-form-item label="尺寸"
+    </el-form-item> -->
+    <!-- <el-form-item label="尺寸"
                   v-if="data.border">
       <el-radio-group v-model="data.size"
                       size="mini">
@@ -85,27 +85,27 @@
         <el-radio-button label="small">小</el-radio-button>
         <el-radio-button label="mini">超小</el-radio-button>
       </el-radio-group>
-    </el-form-item>
-    <el-form-item label="是否禁用">
-      <el-switch v-model="data.disabled"></el-switch>
+    </el-form-item> -->
+    <el-form-item label="是否可编辑">
+      <el-switch v-model="data.editable"></el-switch>
     </el-form-item>
     <el-form-item label="是否可见">
-      <el-switch v-model="data.display"></el-switch>
+      <el-switch v-model="data.visible"></el-switch>
     </el-form-item>
     <el-form-item label="是否必填">
-      <el-switch v-model="data.required"></el-switch>
+      <el-switch v-model="data.require"></el-switch>
     </el-form-item>
   </div>
 </template>
 
 <script>
-import Draggable from 'vuedraggable'
+// import Draggable from 'vuedraggable'
 
 
 export default {
   name: "config-radio",
   props: ['data'],
-  components: { Draggable },
+  // components: { Draggable },
   data () {
     return {
       validator: {
@@ -127,6 +127,7 @@ export default {
       },
     }
   },
+
   methods: {
     generateRule () {
       const rules = [];
@@ -152,7 +153,7 @@ export default {
       else this.validator.required = null
 
       this.generateRule()
-    }
+    },
   }
 }
 </script>

@@ -508,14 +508,13 @@ body {
   .widget-config-container {
     height: 100%;
     padding-top: 5px;
-
     .el-tabs {
       height: 100%;
     }
 
     .el-tabs__header {
       margin: 0;
-      width: 380px;
+      width: 500px;
       height: 45px;
       background: white;
       z-index: 1000;

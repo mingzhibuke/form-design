@@ -1,11 +1,11 @@
 <template>
   <div>
-    <el-form-item label="上传地址"
+    <!-- <el-form-item label="上传地址"
                   v-if="!data.oss">
       <el-input v-model="data.action"
                 placeholder="上传地址"></el-input>
-    </el-form-item>
-    <el-form-item label="接受文件类型"
+    </el-form-item> -->
+    <!-- <el-form-item label="接受文件类型"
                   v-if="!data.oss">
       <el-input v-model="data.accept"
                 placeholder="接受文件类型，如：image/png,image/jpg"></el-input>
@@ -23,35 +23,21 @@
         <el-option label="七牛"
                    value="qiniu"></el-option>
       </el-select>
-    </el-form-item>
-    <el-form-item label="是否拖拽上传">
+    </el-form-item> -->
+    <!-- <el-form-item label="是否拖拽上传">
       <el-switch v-model="data.drag"></el-switch>
-    </el-form-item>
-    <el-form-item label="文件列表类型"
-                  v-if="!data.drag">
-      <el-select v-model="data.listType"
-                 placeholder="文件列表类型"
+    </el-form-item> -->
+    <el-form-item label="文件类型" >
+      <el-select v-model="data.limitFormat"
+                 placeholder="请选择文件类型"
                  clearable>
-        <el-option label="附件"
-                   value="text"></el-option>
-        <el-option label="照片墙"
-                   value="picture-card"></el-option>
-        <el-option label="头像"
-                   value="picture-img"></el-option>
-        <el-option label="缩略图"
-                   value="picture"></el-option>
+        <el-option label="所有文件"
+                   value="FILE"></el-option>
+        <el-option label="图片"
+                   value="IMAGE"></el-option>
       </el-select>
     </el-form-item>
-    <el-form-item label="参数设置">
-      <!-- <a href="https://avuejs.com/doc/form/form-upload"
-         target="_blank"
-         style="color: #409EFF;">详细文档</a><br>
-      数据对象的图片地址
-      <el-input v-model="data.props.label"
-                placeholder="数据对象的图片地址"></el-input>
-      数据对象的图片名称
-      <el-input v-model="data.props.value"
-                placeholder="数据对象的图片名称"></el-input> -->
+    <!-- <el-form-item label="参数设置">
       请求头
       <avue-dynamic v-model="data.headersConfig"
                     :children="option"></avue-dynamic>
@@ -142,15 +128,16 @@
                        :min="0"
                        :max="1"
                        style="width: 100%;"></el-input-number>
+    </el-form-item> -->
+     <el-form-item label="是否可编辑">
+      <el-switch v-model="data.editable"></el-switch>
     </el-form-item>
-    <el-form-item label="是否禁用">
-      <el-switch v-model="data.disabled"></el-switch>
+    <el-form-item label="是否显示">
+      <el-switch v-model="data.visible"></el-switch>
     </el-form-item>
-    <el-form-item label="是否可见">
-      <el-switch v-model="data.display"></el-switch>
-    </el-form-item>
-    <el-form-item label="是否必填">
-      <el-switch v-model="data.required"></el-switch>
+    <el-form-item>
+      是否必选：
+      <el-switch v-model="data.require"></el-switch>
     </el-form-item>
   </div>
 </template>
@@ -190,15 +177,11 @@ export default {
     },
   },
   watch: {
-    'data.required': function (val) {
-      if (val) this.validator.required = { required: true, message: `${this.data.label}必须填写` }
+    'data.require': function (val) {
+      if (val) this.validator.required = { required: true, message: `${this.data.title}必须选择` }
       else this.validator.required = null
-
       this.generateRule()
     },
-    'data.drag': function (val) {
-      if (val) delete this.data.listType
-    }
   }
 }
 </script>

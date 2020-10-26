@@ -47,7 +47,7 @@
                              :min="8"
                              :max="24"></el-input-number>
           </el-form-item> -->
-          <el-form-item label="数据类型"
+          <!-- <el-form-item label="数据类型"
                         v-if="['cascader','checkbox','upload','img','array'].includes(data.type)">
             <el-select v-model="data.dataType"
                        placeholder="数据类型"
@@ -58,7 +58,7 @@
                          value="number"></el-option>
             </el-select>
  
-          </el-form-item>
+          </el-form-item> -->
           <!-- 判断进入对应组件 -->
           <component :is="getComponent"
                      :data="data"></component> 
@@ -116,7 +116,7 @@ export default {
       const { type, component } = this.data
       if (!type || component) return prefix + 'custom'
       let result = 'input'
-      if ([undefined, 'input', 'password', 'url','1','0'].includes(type)) result = 'input' //显示基本属性
+      if ([undefined, 'input', 'password', 'url','1','0','6'].includes(type)) result = 'input' //显示基本属性
       else if (dateArr.includes(type)) result = 'date'
       else if (['array', 'img'].includes(type)) result = 'array'
       else result = type

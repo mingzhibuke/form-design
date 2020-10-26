@@ -1,19 +1,19 @@
 <template>
   <div>
-    <el-form-item label="默认值">
+    <!-- <el-form-item label="默认显示">
       <el-input v-model="data.value"
-                placeholder="默认值"></el-input>
-    </el-form-item>
-    <el-form-item label="距左边边距">
+                placeholder="默认显示"></el-input>
+    </el-form-item> -->
+    <!-- <el-form-item label="距左边边距">
       <el-input v-model="data.labelWidth"
                 placeholder="距左边边距"></el-input>
-    </el-form-item>
-    <el-form-item label="颜色">
+    </el-form-item> -->
+    <!-- <el-form-item label="颜色">
       <el-color-picker v-model="data.color"
                        size="mini"></el-color-picker>
-    </el-form-item>
+    </el-form-item> -->
 
-    <el-form-item label="粗体">
+    <!-- <el-form-item label="粗体">
       <el-select v-model="data.fontWeight"
                  placeholder="粗体">
         <el-option v-for="item in options"
@@ -22,7 +22,7 @@
                    :value="item">
         </el-option>
       </el-select>
-    </el-form-item>
+    </el-form-item> -->
   </div>
 </template>
 

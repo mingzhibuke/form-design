@@ -11,8 +11,6 @@
                v-bind="Object.assign(deepClone(item), params, { size:item.size || 'small' })"
                :placeholder="item.notice || getPlaceholder(item)"
                :dic="item.dicData">
-      <span v-if="params.html"
-            v-html="params.html"></span>
     </component>
   </div>
 </template>
@@ -26,12 +24,6 @@ export default {
         return {}
       }
     },
-    params: {
-      type: Object,
-      default: () => {
-        return {}
-      }
-    }
   },
   data () {
     return {

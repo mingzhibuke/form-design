@@ -72,26 +72,26 @@
                          icon="el-icon-refresh-left"
                          :disabled="historySteps.index == 0"
                          @click="widgetForm = handleUndo()">撤销</el-button>
-              <el-button type="text"
+              <!-- <el-button type="text"
                          size="medium"
                          icon="el-icon-refresh-right"
                          :disabled="historySteps.index == historySteps.steps.length - 1"
-                         @click="widgetForm = handleRedo()">重做</el-button>
+                         @click="widgetForm = handleRedo()">重做</el-button> -->
             </template>
           </div>
           <div style="display: flex; align-items: center;">
-            <el-button type="text"
+            <!-- <el-button type="text"
                        size="medium"
                        icon="el-icon-upload2"
-                       @click="importJsonVisible = true">导入JSON</el-button>
+                       @click="importJsonVisible = true">导入JSON</el-button> -->
             <el-button type="text"
                        size="medium"
                        icon="el-icon-download"
-                       @click="handleGenerateJson">生成JSON</el-button>
-            <el-button type="text"
+                       @click="handleGenerateJson">生成</el-button>
+            <!-- <el-button type="text"
                        size="medium"
                        icon="el-icon-view"
-                       @click="handlePreview">预览</el-button>
+                       @click="handlePreview">预览</el-button> -->
             <el-button class="danger"
                        type="text"
                        size="medium"
@@ -121,7 +121,7 @@
                        lazy
                        style="padding: 0 10px;">
             <form-config :data="widgetForm"></form-config> -->
-          </el-tab-pane>
+          <!-- </el-tab-pane> -->
         </el-tabs>
       </el-aside>
       <!-- 弹窗 -->
@@ -163,7 +163,7 @@
         </div>
       </el-drawer>
       <!-- 预览 -->
-      <el-drawer title="预览"
+      <!-- <el-drawer title="预览"
                  :visible.sync="previewVisible"
                  size="60%"
                  append-to-body
@@ -182,7 +182,7 @@
                      type="danger"
                      @click="handleBeforeClose">取消</el-button>
         </div>
-      </el-drawer>
+      </el-drawer> -->
     </el-container>
   </div>
 </template>
@@ -260,7 +260,6 @@ export default {
     },
     options: {
       handler(val) {
-        debugger
         this.transAvueOptionsToFormDesigner(val).then(res => {
           this.widgetForm = { ...this.widgetForm, ...res }
         })
@@ -398,6 +397,7 @@ export default {
     },
     // 生成JSON - 弹窗
     handleGenerateJson() {
+      console.log(this.widgetForm)
       this.transformToAvueOptions(this.widgetForm).then(data => {
         this.widgetFormPreview = data
         this.generateJsonVisible = true

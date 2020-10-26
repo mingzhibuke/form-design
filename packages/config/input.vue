@@ -38,7 +38,7 @@
     <el-form-item label="是否显示">
       <el-switch v-model="data.visible"></el-switch>
     </el-form-item>
-    <el-form-item label="校验"><br>
+    <el-form-item >
       是否必填：
       <el-switch v-model="data.require"></el-switch>
       <!-- <el-input v-model.lazy="data.pattern"

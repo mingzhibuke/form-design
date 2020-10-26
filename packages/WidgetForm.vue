@@ -109,7 +109,7 @@ export default {
       delete data.subfield
       if (data.type == 'title') {
         delete data.label
-        this.form[data.prop] = data.value
+        this.form[data.prop] = data.notice
       }
       this.$set(this.data.column, newIndex, data)
       this.handleSelectWidget(newIndex)

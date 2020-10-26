@@ -1,10 +1,10 @@
 <template>
   <div>
-    <el-form-item label="占位内容">
+    <!-- <el-form-item label="占位内容">
       <el-input v-model="data.placeholder"
                 placeholder="占位内容"></el-input>
-    </el-form-item>
-    <el-form-item label="默认值">
+    </el-form-item> -->
+    <!-- <el-form-item label="默认值">
       <el-input v-model="data.value"
                 placeholder="默认值"></el-input>
     </el-form-item>
@@ -14,16 +14,28 @@
     <el-form-item label="是否可拖拽（需引入sortable.js）"
                   v-if="data.multiple">
       <el-switch v-model="data.drag"></el-switch>
+    </el-form-item> -->
+    <el-form-item label="表单项提示内容">
+      <el-input v-model="data.notice"
+                placeholder="表单项提示内容"></el-input>
     </el-form-item>
-    <el-form-item label="多选数量限制"
-                  v-if="data.multiple">
-      <el-input-number v-model="data.limit"
+    <el-form-item v-if="data.title!='单选下拉'" label="最少选择数量"
+                  >
+      <el-input-number  v-model="data.limitMin"
                        controls-position="right"
                        placeholder="多选限制"
-                       :min="0"
-                       :max="data.dicData.length"></el-input-number>
+                       :min="1"
+                       :max="10"></el-input-number>
     </el-form-item>
-    <el-form-item label="字典配置"><br>
+       <el-form-item v-if="data.title!='单选下拉'" label="最多选择数量"
+                  >
+      <el-input-number  v-model="data.limitMax"
+                       controls-position="right"
+                       placeholder="多选限制"
+                       :min="1"
+                       :max="10"></el-input-number>
+    </el-form-item>
+    <!-- <el-form-item label="字典配置"><br>
       <el-tabs v-model="data.dicOption"
                stretch
                @tab-click="handleTabClick">
@@ -140,15 +152,15 @@
     </el-form-item>
     <el-form-item label="是否可搜索">
       <el-switch v-model="data.filterable"></el-switch>
-    </el-form-item>
-    <el-form-item label="是否禁用">
-      <el-switch v-model="data.disabled"></el-switch>
+    </el-form-item> -->
+    <el-form-item label="是否可编辑">
+      <el-switch v-model="data.editable"></el-switch>
     </el-form-item>
     <el-form-item label="是否可见">
-      <el-switch v-model="data.display"></el-switch>
+      <el-switch v-model="data.visible"></el-switch>
     </el-form-item>
     <el-form-item label="是否必填">
-      <el-switch v-model="data.required"></el-switch>
+      <el-switch v-model="data.require"></el-switch>
     </el-form-item>
   </div>
 </template>
